@@ -1,0 +1,13 @@
+{
+    "name": "dmpty/laravel-utilities",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dmpty\\LaravelUtilities\\": "src/"
+        }
+    },
+    "require": {
+        "laravel/framework": "^8"
+    }
+}
