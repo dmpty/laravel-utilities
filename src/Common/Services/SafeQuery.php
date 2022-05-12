@@ -37,7 +37,7 @@ class SafeQuery
     /**
      * @throws LogTableNotExist
      */
-    private function __execute($method, $arguments): static
+    private function __execute($method, $arguments): mixed
     {
         try {
             if (in_array($method, $this->endMethod)) {
