@@ -64,6 +64,13 @@ if (!function_exists('success')) {
     }
 }
 
+if (!function_exists('fail')) {
+    function fail(string $msg = 'Fail'): JsonResponse
+    {
+        return msg($msg, 0);
+    }
+}
+
 if (!function_exists('is_prod')) {
     function is_prod(): bool
     {
@@ -76,5 +83,48 @@ if (!function_exists('mtime')) {
     {
         list($micro, $time) = explode(' ', microtime());
         return $time * 1000 + intval($micro * 1000);
+    }
+}
+
+if (!function_exists('json2array')) {
+    function json2array($json): array
+    {
+        try {
+            return json_decode($json, 1);
+        } /** @noinspection PhpUnusedLocalVariableInspection */ catch (Exception $e) {
+            return [];
+        }
+    }
+}
+
+if (!function_exists('md5_sign')) {
+    function md5_sign(array $data, string $apiKey): string
+    {
+        $str = md5_sign_get_str($data) . '&apiKey=' . $apiKey;
+        return strtoupper(md5($str));
+    }
+}
+
+if (!function_exists('md5_sign_get_str')) {
+    function md5_sign_get_str(array $arr, string $parentKey = ''): string
+    {
+        ksort($arr);
+        $data = [];
+        foreach ($arr as $childKey => $value) {
+            if (!$value) {
+                continue;
+            }
+            if ($parentKey) {
+                $key = $parentKey . '.' . $childKey;
+            } else {
+                $key = $childKey;
+            }
+            if (is_array($value)) {
+                $data[$key] = md5_sign_get_str($value, $key);
+            } else {
+                $data[$key] = $key . '=' . $value;
+            }
+        }
+        return implode('&', $data);
     }
 }
