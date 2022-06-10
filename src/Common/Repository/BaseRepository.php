@@ -3,7 +3,7 @@
 namespace Dmpty\LaravelUtilities\Common\Repository;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Dmpty\LaravelUtilities\Common\Models\DynamicModel;
 use Dmpty\LaravelUtilities\Common\Services\SafeQuery;
 use Dmpty\LaravelUtilities\Error\Exceptions\LogTableNotExist;
