@@ -2,9 +2,10 @@
 
 namespace Dmpty\LaravelUtilities\Error;
 
+use Dmpty\LaravelUtilities\Common\Models\DynamicModel;
 use Dmpty\LaravelUtilities\Common\Repository\BaseRepository;
 
 class ErrorLogRepository extends BaseRepository
 {
-    protected $dynamicModel = ErrorLog::class;
+    protected DynamicModel|string $dynamicModel = ErrorLog::class;
 }

@@ -2,6 +2,7 @@
 
 namespace Dmpty\LaravelUtilities\Common\Services;
 
+use Dmpty\LaravelUtilities\Common\Contacts\TableService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\QueryException;
 use Dmpty\LaravelUtilities\Common\Models\DynamicModel;
@@ -12,15 +13,15 @@ use Dmpty\LaravelUtilities\Error\Exceptions\LogTableNotExist;
  */
 class SafeQuery
 {
-    private $tableService;
+    private string|TableService $tableService;
 
-    public $model;
+    public DynamicModel $model;
 
-    public $query;
+    public Builder $query;
 
-    private $force;
+    private bool $force;
 
-    private $endMethod = [
+    private array $endMethod = [
         'get',
         'first',
         'create',

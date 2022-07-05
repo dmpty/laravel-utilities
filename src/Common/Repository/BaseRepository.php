@@ -6,15 +6,14 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Dmpty\LaravelUtilities\Common\Models\DynamicModel;
 use Dmpty\LaravelUtilities\Common\Services\SafeQuery;
-use Dmpty\LaravelUtilities\Error\Exceptions\LogTableNotExist;
+use Dmpty\LaravelUtilities\Error\Exceptions\LogTableNotExist as LTnExist;
 
 abstract class BaseRepository
 {
     protected const DATE_RANGE_TYPE_DAY = 0;
     protected const DATE_RANGE_TYPE_MONTH = 1;
 
-    /** @var DynamicModel */
-    protected $dynamicModel;
+    protected string|DynamicModel $dynamicModel;
 
     /**
      * @param Carbon $start
@@ -84,7 +83,7 @@ abstract class BaseRepository
                 $query->where('created_at', '<', $end);
             }
             return $query->get();
-        } /** @noinspection PhpRedundantCatchClauseInspection,PhpUnusedLocalVariableInspection */ catch (LogTableNotExist $e) {
+        } /** @noinspection PhpRedundantCatchClauseInspection,PhpUnusedLocalVariableInspection */ catch (LTnExist $e) {
             return new Collection();
         }
     }

@@ -8,8 +8,7 @@ use Dmpty\LaravelUtilities\Common\Services\SafeQuery;
 
 class DynamicModel extends BaseModel implements HasTableService
 {
-    /** @var TableService */
-    public $tableService;
+    public string|TableService $tableService;
 
     public function __construct(array $attributes = [], $suffix = '')
     {

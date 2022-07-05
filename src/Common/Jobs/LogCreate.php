@@ -2,6 +2,7 @@
 
 namespace Dmpty\LaravelUtilities\Common\Jobs;
 
+use Dmpty\LaravelUtilities\Common\Models\DynamicModel;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -13,11 +14,11 @@ class LogCreate implements ShouldQueue
     use InteractsWithQueue;
     use Queueable;
 
-    private $class;
+    private DynamicModel|string $class;
 
-    private $data;
+    private array $data;
 
-    private $date;
+    private string $date;
 
     /**
      * Create a new job instance.

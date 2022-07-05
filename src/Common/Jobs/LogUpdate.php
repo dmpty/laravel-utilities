@@ -14,7 +14,7 @@ class LogUpdate implements ShouldQueue
     use InteractsWithQueue;
     use Queueable;
 
-    private $data;
+    private array $data;
 
     /**
      * Create a new job instance.

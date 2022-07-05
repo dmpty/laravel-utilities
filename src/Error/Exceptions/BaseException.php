@@ -7,11 +7,11 @@ use Throwable;
 
 class BaseException extends Exception implements ExceptionInterface
 {
-    protected $reportable = true;
+    protected bool $reportable = true;
 
-    protected $data;
+    protected array $data;
 
-    protected $status = 500;
+    protected int $status = 500;
 
     public function __construct($message = "", $data = [], $code = 0, Throwable $previous = null)
     {
