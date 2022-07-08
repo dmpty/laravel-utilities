@@ -31,7 +31,7 @@ class LogUpdate implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         DB::connection('logs')
             ->table($this->data['table'])

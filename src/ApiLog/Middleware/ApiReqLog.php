@@ -17,17 +17,17 @@ class ApiReqLog
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        app()->singleton('reqData', function () {
-            $log = ApiLog::safeQuery()->create([
-                'ip' => request()->ip(),
-                'url' => request()->url(),
-                'req' => [
-                    'headers' => request()->header(),
-                    'data' => request()->all(),
-                    'content' => request()->getContent(),
-                ],
-                'res' => [],
-            ]);
+        $log = ApiLog::safeQuery()->create([
+            'ip' => request()->ip(),
+            'url' => request()->url(),
+            'req' => [
+                'headers' => request()->header(),
+                'data' => request()->all(),
+                'content' => request()->getContent(),
+            ],
+            'res' => [],
+        ]);
+        app()->singleton('reqData', function () use ($log) {
             return [
                 'id' => $log['id'],
                 'table' => $log->getTable(),

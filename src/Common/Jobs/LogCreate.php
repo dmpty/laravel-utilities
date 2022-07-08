@@ -37,7 +37,7 @@ class LogCreate implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $this->class::safeQuery($this->date)->create($this->data);
     }
