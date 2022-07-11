@@ -90,7 +90,11 @@ if (!function_exists('json2array')) {
     function json2array($json): array
     {
         try {
-            return json_decode($json, 1);
+            $res = json_decode($json, 1);
+            if (!is_array($res)) {
+                return [];
+            }
+            return $res;
         } /** @noinspection PhpUnusedLocalVariableInspection */ catch (Exception $e) {
             return [];
         }
