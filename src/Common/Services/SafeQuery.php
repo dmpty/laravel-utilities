@@ -25,6 +25,7 @@ class SafeQuery
         'get',
         'first',
         'create',
+        'insert',
     ];
 
     public function __construct(DynamicModel $model, bool $force = false)
