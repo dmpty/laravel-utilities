@@ -5,11 +5,11 @@ namespace Dmpty\LaravelUtilities\Error\Handler;
 use Dmpty\LaravelUtilities\Common\Jobs\LogCreate;
 use Dmpty\LaravelUtilities\Error\ErrorLog;
 use Dmpty\LaravelUtilities\Error\Exceptions\ExceptionInterface;
-use Exception;
+use Throwable;
 
 class LogHandler
 {
-    public static function handle(Exception $e): bool
+    public static function handle(Throwable $e): bool
     {
         $data = [];
         if ($e instanceof ExceptionInterface) {

@@ -95,7 +95,7 @@ if (!function_exists('json2array')) {
                 return [];
             }
             return $res;
-        } /** @noinspection PhpUnusedLocalVariableInspection */ catch (Exception $e) {
+        } /** @noinspection PhpUnusedLocalVariableInspection */ catch (Throwable $e) {
             return [];
         }
     }

@@ -2,11 +2,11 @@
 
 namespace Dmpty\LaravelUtilities\Error\Providers;
 
-use Exception;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\ServiceProvider;
 use Dmpty\LaravelUtilities\Error\Handler\ExceptionHandler as Handler;
 use Dmpty\LaravelUtilities\Error\Handler\LogHandler;
+use Throwable;
 
 class ErrorServiceProvider extends ServiceProvider
 {
@@ -24,10 +24,10 @@ class ErrorServiceProvider extends ServiceProvider
             );
             /** @var Handler $handler */
             $handler = app(ExceptionHandler::class);
-            $handler->reportable(function (Exception $e) {
+            $handler->reportable(function (Throwable $e) {
                 return LogHandler::handle($e);
             });
-            $handler->renderable(function (Exception $e) {
+            $handler->renderable(function (Throwable $e) {
                 return error($e);
             });
         }
