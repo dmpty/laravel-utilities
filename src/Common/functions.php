@@ -115,7 +115,7 @@ if (!function_exists('md5_sign_get_str')) {
         ksort($arr);
         $data = [];
         foreach ($arr as $childKey => $value) {
-            if ($value === '') {
+            if ($value === '' || $value === null) {
                 continue;
             }
             if ($parentKey) {
